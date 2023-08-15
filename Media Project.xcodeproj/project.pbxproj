@@ -22,12 +22,19 @@
 		140926352A87340D001629D2 /* URL + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140926342A87340D001629D2 /* URL + Extension.swift */; };
 		140926372A873568001629D2 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140926362A873568001629D2 /* TMDBAPIManager.swift */; };
 		140926392A873E2C001629D2 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140926382A873E2C001629D2 /* EndPoint.swift */; };
-		1409263B2A874962001629D2 /* TMDBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409263A2A874961001629D2 /* TMDBTableViewCell.swift */; };
 		1409263D2A874AA4001629D2 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409263C2A874AA4001629D2 /* ReusableViewProtocol.swift */; };
 		140926402A887E8D001629D2 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409263F2A887E8D001629D2 /* UIViewController + Extension.swift */; };
 		140926422A887EA6001629D2 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140926412A887EA6001629D2 /* UITableViewExtension.swift */; };
 		140926452A88A67F001629D2 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140926442A88A67F001629D2 /* CreditViewController.swift */; };
-		140926472A88B28E001629D2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140926462A88B28E001629D2 /* CreditTableViewCell.swift */; };
+		143095762A8A1E0300D00421 /* TMDBCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095742A8A1E0300D00421 /* TMDBCollectionViewCell.swift */; };
+		143095772A8A1E0300D00421 /* TMDBCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143095752A8A1E0300D00421 /* TMDBCollectionViewCell.xib */; };
+		1430957C2A8A293300D00421 /* UICollectionViewCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1430957B2A8A293300D00421 /* UICollectionViewCell + Extension.swift */; };
+		1430957E2A8A295700D00421 /* UICollectionView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1430957D2A8A295700D00421 /* UICollectionView + Extension.swift */; };
+		143095802A8B941900D00421 /* GenreDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1430957F2A8B941900D00421 /* GenreDict.swift */; };
+		143095832A8BB6F300D00421 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095812A8BB6F300D00421 /* CreditTableViewCell.swift */; };
+		143095842A8BB6F300D00421 /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143095822A8BB6F300D00421 /* CreditTableViewCell.xib */; };
+		143095872A8BC33A00D00421 /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095852A8BC33A00D00421 /* OverviewTableViewCell.swift */; };
+		143095882A8BC33A00D00421 /* OverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,12 +52,19 @@
 		140926342A87340D001629D2 /* URL + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL + Extension.swift"; sourceTree = "<group>"; };
 		140926362A873568001629D2 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		140926382A873E2C001629D2 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		1409263A2A874961001629D2 /* TMDBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTableViewCell.swift; sourceTree = "<group>"; };
 		1409263C2A874AA4001629D2 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		1409263F2A887E8D001629D2 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		140926412A887EA6001629D2 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		140926442A88A67F001629D2 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
-		140926462A88B28E001629D2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
+		143095742A8A1E0300D00421 /* TMDBCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCollectionViewCell.swift; sourceTree = "<group>"; };
+		143095752A8A1E0300D00421 /* TMDBCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMDBCollectionViewCell.xib; sourceTree = "<group>"; };
+		1430957B2A8A293300D00421 /* UICollectionViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extension.swift"; sourceTree = "<group>"; };
+		1430957D2A8A295700D00421 /* UICollectionView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extension.swift"; sourceTree = "<group>"; };
+		1430957F2A8B941900D00421 /* GenreDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDict.swift; sourceTree = "<group>"; };
+		143095812A8BB6F300D00421 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
+		143095822A8BB6F300D00421 /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
+		143095852A8BC33A00D00421 /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
+		143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +105,9 @@
 				140926252A8725C6001629D2 /* APIKey.swift */,
 				140926322A8733A1001629D2 /* MediaType.swift */,
 				140926382A873E2C001629D2 /* EndPoint.swift */,
+				1430957F2A8B941900D00421 /* GenreDict.swift */,
 				140926362A873568001629D2 /* TMDBAPIManager.swift */,
-				140926152A87250F001629D2 /* TMDBViewController.swift */,
-				140926442A88A67F001629D2 /* CreditViewController.swift */,
-				1409263A2A874961001629D2 /* TMDBTableViewCell.swift */,
-				140926462A88B28E001629D2 /* CreditTableViewCell.swift */,
+				143095782A8A1E0700D00421 /* Controller */,
 				1409263E2A887E7C001629D2 /* Extension */,
 				140926432A887ED4001629D2 /* Protocol */,
 				140926172A87250F001629D2 /* Main.storyboard */,
@@ -113,6 +125,8 @@
 				140926342A87340D001629D2 /* URL + Extension.swift */,
 				1409263F2A887E8D001629D2 /* UIViewController + Extension.swift */,
 				140926412A887EA6001629D2 /* UITableViewExtension.swift */,
+				1430957D2A8A295700D00421 /* UICollectionView + Extension.swift */,
+				1430957B2A8A293300D00421 /* UICollectionViewCell + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -123,6 +137,37 @@
 				1409263C2A874AA4001629D2 /* ReusableViewProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		143095782A8A1E0700D00421 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				140926152A87250F001629D2 /* TMDBViewController.swift */,
+				140926442A88A67F001629D2 /* CreditViewController.swift */,
+				143095792A8A1E1400D00421 /* TableViewCell */,
+				1430957A2A8A1E6700D00421 /* CollectionViewCell */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		143095792A8A1E1400D00421 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				143095812A8BB6F300D00421 /* CreditTableViewCell.swift */,
+				143095822A8BB6F300D00421 /* CreditTableViewCell.xib */,
+				143095852A8BC33A00D00421 /* OverviewTableViewCell.swift */,
+				143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		1430957A2A8A1E6700D00421 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				143095742A8A1E0300D00421 /* TMDBCollectionViewCell.swift */,
+				143095752A8A1E0300D00421 /* TMDBCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,9 +238,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143095772A8A1E0300D00421 /* TMDBCollectionViewCell.xib in Resources */,
 				140926282A87263C001629D2 /* .gitignore in Resources */,
 				1409261E2A872511001629D2 /* LaunchScreen.storyboard in Resources */,
 				1409261B2A872511001629D2 /* Assets.xcassets in Resources */,
+				143095882A8BC33A00D00421 /* OverviewTableViewCell.xib in Resources */,
+				143095842A8BB6F300D00421 /* CreditTableViewCell.xib in Resources */,
 				140926192A87250F001629D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,17 +257,21 @@
 			files = (
 				140926162A87250F001629D2 /* TMDBViewController.swift in Sources */,
 				140926122A87250F001629D2 /* AppDelegate.swift in Sources */,
+				1430957E2A8A295700D00421 /* UICollectionView + Extension.swift in Sources */,
 				140926392A873E2C001629D2 /* EndPoint.swift in Sources */,
 				140926422A887EA6001629D2 /* UITableViewExtension.swift in Sources */,
 				140926332A8733A1001629D2 /* MediaType.swift in Sources */,
 				140926262A8725C6001629D2 /* APIKey.swift in Sources */,
 				140926142A87250F001629D2 /* SceneDelegate.swift in Sources */,
-				1409263B2A874962001629D2 /* TMDBTableViewCell.swift in Sources */,
+				143095802A8B941900D00421 /* GenreDict.swift in Sources */,
 				140926372A873568001629D2 /* TMDBAPIManager.swift in Sources */,
+				143095872A8BC33A00D00421 /* OverviewTableViewCell.swift in Sources */,
+				143095762A8A1E0300D00421 /* TMDBCollectionViewCell.swift in Sources */,
 				140926352A87340D001629D2 /* URL + Extension.swift in Sources */,
+				143095832A8BB6F300D00421 /* CreditTableViewCell.swift in Sources */,
 				140926452A88A67F001629D2 /* CreditViewController.swift in Sources */,
 				140926402A887E8D001629D2 /* UIViewController + Extension.swift in Sources */,
-				140926472A88B28E001629D2 /* CreditTableViewCell.swift in Sources */,
+				1430957C2A8A293300D00421 /* UICollectionViewCell + Extension.swift in Sources */,
 				1409263D2A874AA4001629D2 /* ReusableViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

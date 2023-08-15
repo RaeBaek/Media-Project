@@ -57,11 +57,11 @@ class TMDBAPIManager {
                 let json = JSON(value)
                 // 이 부분이 매우 중요!! 컴플리션 핸들러!!
                 completionHandler(json)
+                print("creditAPI 성공성공!")
                 
             case .failure(let error):
                 print(error)
             }
         }
     }
-    
 }
