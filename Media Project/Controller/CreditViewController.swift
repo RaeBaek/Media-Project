@@ -38,14 +38,21 @@ class CreditViewController: UIViewController {
         creditTableView.delegate = self
         creditTableView.dataSource = self
         creditTableView.rowHeight = 100
+        
         creditTableView.sectionHeaderHeight = 40
         creditTableView.sectionFooterHeight = 0
         creditTableView.backgroundColor = .systemBackground
+        // 아래 코드는 테이블 전체가 변하므로
+        // 섹션별로 바꿀 수 있는 코드는 없는지 알아보자
+//        creditTableView.separatorStyle = .none
+//        creditTableView.separatorColor = .clear
         
         let nib = UINib(nibName: CreditTableViewCell.identifier, bundle: nil)
         let nib2 = UINib(nibName: OverviewTableViewCell.identifier, bundle: nil)
+        let nib3 = UINib(nibName: OverviewButtonTableViewCell.identifier, bundle: nil)
         creditTableView.register(nib, forCellReuseIdentifier: CreditTableViewCell.identifier)
         creditTableView.register(nib2, forCellReuseIdentifier: OverviewTableViewCell.identifier)
+        creditTableView.register(nib3, forCellReuseIdentifier: OverviewButtonTableViewCell.identifier)
         
         guard let credit = credit else { return }
         print("Credit: \(credit)")
@@ -107,19 +114,38 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : creditList.count
+        return section == 0 ? 2 : creditList.count
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                return 70
+            } else {
+                return 30
+            }
+        } else {
+            return 120
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell else { return UITableViewCell() }
-            
-            cell.overviewLabel.text = overView
-            
-            return cell
+            if indexPath.row == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell else { return UITableViewCell() }
+                
+                cell.overviewLabel.text = overView
+                cell.selectionStyle = .none
+                
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: OverviewButtonTableViewCell.identifier) as? OverviewButtonTableViewCell else { return UITableViewCell() }
+                
+                cell.selectionStyle = .none
+                
+                return cell
+                
+            }
             
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CreditTableViewCell.identifier) as? CreditTableViewCell else { return UITableViewCell() }
@@ -133,9 +159,6 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             return cell
         }
-        
-        
-        
         
     }
     

@@ -35,6 +35,8 @@
 		143095842A8BB6F300D00421 /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143095822A8BB6F300D00421 /* CreditTableViewCell.xib */; };
 		143095872A8BC33A00D00421 /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095852A8BC33A00D00421 /* OverviewTableViewCell.swift */; };
 		143095882A8BC33A00D00421 /* OverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */; };
+		1430958B2A8BCAB000D00421 /* OverviewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095892A8BCAB000D00421 /* OverviewButtonTableViewCell.swift */; };
+		1430958C2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1430958A2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		143095822A8BB6F300D00421 /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
 		143095852A8BC33A00D00421 /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableViewCell.xib; sourceTree = "<group>"; };
+		143095892A8BCAB000D00421 /* OverviewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewButtonTableViewCell.swift; sourceTree = "<group>"; };
+		1430958A2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewButtonTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,8 @@
 				143095822A8BB6F300D00421 /* CreditTableViewCell.xib */,
 				143095852A8BC33A00D00421 /* OverviewTableViewCell.swift */,
 				143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */,
+				143095892A8BCAB000D00421 /* OverviewButtonTableViewCell.swift */,
+				1430958A2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -244,6 +250,7 @@
 				1409261B2A872511001629D2 /* Assets.xcassets in Resources */,
 				143095882A8BC33A00D00421 /* OverviewTableViewCell.xib in Resources */,
 				143095842A8BB6F300D00421 /* CreditTableViewCell.xib in Resources */,
+				1430958C2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib in Resources */,
 				140926192A87250F001629D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +279,7 @@
 				140926452A88A67F001629D2 /* CreditViewController.swift in Sources */,
 				140926402A887E8D001629D2 /* UIViewController + Extension.swift in Sources */,
 				1430957C2A8A293300D00421 /* UICollectionViewCell + Extension.swift in Sources */,
+				1430958B2A8BCAB000D00421 /* OverviewButtonTableViewCell.swift in Sources */,
 				1409263D2A874AA4001629D2 /* ReusableViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
