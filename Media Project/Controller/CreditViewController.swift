@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Cast {
+struct Caster {
     var name: String
     var profileURL: URL
     var character: String
@@ -20,24 +20,32 @@ class CreditViewController: UIViewController {
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
     
-    var backURL: URL?
-    var posterURL: URL?
-    var movieTitle: String?
+//    var backURL: URL?
+//    var posterURL: URL?
+//    var movieTitle: String?
     var credit: Int?
-    var overView: String?
-    var creditList: [Cast] = []
+//    var overView: String?
+//    var creditList: [Caster] = []
+    
+    var movieInfo: TMDBMovieInfo?
+    var credits: TMDBCredit?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(#function)
         title = "출연/제작"
         
-        navigationController?.navigationBar.topItem?.title = ""
-        navigationController?.navigationBar.tintColor = .black
+//        navigationController?.navigationBar.topItem?.title = ""
+//        navigationController?.navigationBar.tintColor = .black
+        
+        let backButton = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(backButtonClicked))
+        backButton.tintColor = .black
+        self.navigationItem.backBarButtonItem = backButton
         
         creditTableView.delegate = self
         creditTableView.dataSource = self
-        creditTableView.rowHeight = 100
+//        creditTableView.rowHeight = 80
         
         creditTableView.sectionHeaderHeight = 40
         creditTableView.sectionFooterHeight = 0
@@ -54,50 +62,74 @@ class CreditViewController: UIViewController {
         creditTableView.register(nib2, forCellReuseIdentifier: OverviewTableViewCell.identifier)
         creditTableView.register(nib3, forCellReuseIdentifier: OverviewButtonTableViewCell.identifier)
         
-        guard let credit = credit else { return }
-        print("Credit: \(credit)")
+        DispatchQueue.global().async {
+            guard let credit = self.credit else { return }
+            print("실행되잖아요")
+            print("Credit: \(credit)")
+            
+            self.callRequestMovieInfoAPI(credit: credit)
+            
+            print("실행되긴해 뭐가 문제야")
+        }
         
-        callRequestCreditAPI(mediaType: .movie, credit: credit)
-        
-        guard let movieTitle = movieTitle else { return }
-        guard let backURL = backURL else { return }
-        guard let posterURL = posterURL else { return }
-        
-        print(movieTitle)
-        print(backURL)
-        print(posterURL)
-        
-        movieTitleLabel.text = movieTitle
         movieTitleLabel.textColor = .white
         movieTitleLabel.font = .systemFont(ofSize: 25, weight: .bold)
-        backImageView.kf.setImage(with: backURL)
         backImageView.contentMode = .scaleAspectFill
-        posterImageView.kf.setImage(with: posterURL)
         
     }
     
-    func callRequestCreditAPI(mediaType: MediaType, credit: Int) {
-        TMDBAPIManager.shared.requestCreditAPI(mediaType: mediaType, credit: credit) { json in
-//            print(json)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(#function)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(#function)
+    }
+    
+    @objc func backButtonClicked() {
+        self.movieInfo = nil
+        self.credit = nil
+        self.credits = nil
+    }
+    
+    func callRequestMovieInfoAPI(credit: Int) {
+        print(credit)
+        print("들어왔잖아요")
+        TMDBAPIManager.shared.requestMovieInfoAPI(credit: credit) { response in
             
-            let cast = json["cast"].arrayValue
-            print(cast)
+            print(credit)
+            self.movieInfo = response
             
-            for item in cast {
-                let name = item["name"].stringValue
-                let profilePath = item["profile_path"].stringValue
-                let character = item["character"].stringValue
+            print("또 들어간다!!!!")
+            DispatchQueue.global().async {
+                print("또 들어왔다????")
+                self.callRequestCreditAPI(mediaType: .movie, credit: credit)
                 
-                guard let profileURL = URL(string: "https://image.tmdb.org/t/p/original\(profilePath)") else { return }
+                guard let backdropPath = self.movieInfo?.backdropPath else { return }
+                guard let posterPath = self.movieInfo?.posterPath else { return }
+                guard let backdropURL = URL(string: "https://image.tmdb.org/t/p/original\(backdropPath)") else { return }
+                guard let posterURL = URL(string: "https://image.tmdb.org/t/p/original\(posterPath)") else { return }
+                guard let movieTitle = self.movieInfo?.title else { return }
                 
-                let data = Cast(name: name, profileURL: profileURL, character: character)
-                
-                self.creditList.append(data)
+                DispatchQueue.main.async {
+                    self.backImageView.kf.setImage(with: backdropURL)
+                    self.posterImageView.kf.setImage(with: posterURL)
+                    self.movieTitleLabel.text = movieTitle
+                }
             }
+//            self.creditTableView.reloadData()
+        }
+    }
+    
+    func callRequestCreditAPI(mediaType: MediaType, credit: Int) {
+        TMDBAPIManager.shared.requestCreditAPI(mediaType: mediaType, credit: credit) { response in
+            
+            self.credits = response
+            print("Credits IDdddddddddd: ", self.credits?.id)
             
             self.creditTableView.reloadData()
-            print(self.creditList)
-            
         }
     }
 
@@ -114,7 +146,11 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : creditList.count
+        
+        guard let count = self.credits?.cast.count else { return 0 }
+        print("Counttttt:", count)
+        
+        return section == 0 ? 2 : count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -125,7 +161,7 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
                 return 30
             }
         } else {
-            return 120
+            return 100
         }
     }
     
@@ -134,7 +170,7 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell else { return UITableViewCell() }
                 
-                cell.overviewLabel.text = overView
+                cell.overviewLabel.text = self.movieInfo?.overview
                 cell.selectionStyle = .none
                 
                 return cell
@@ -144,21 +180,28 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 
                 return cell
-                
             }
             
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CreditTableViewCell.identifier) as? CreditTableViewCell else { return UITableViewCell() }
             
-            DispatchQueue.main.async {
-                cell.profileImageView.kf.setImage(with: self.creditList[indexPath.row].profileURL)
-                cell.nameLabel.text = self.creditList[indexPath.row].name
-                cell.characterLabel.text = self.creditList[indexPath.row].character
+            DispatchQueue.global().async {
+                guard let profilePath = self.credits?.cast[indexPath.row].profilePath else { return }
+                guard let profileURL = URL(string: "https://image.tmdb.org/t/p/original\(profilePath)") else { return }
+                guard let name = self.credits?.cast[indexPath.row].name else { return }
+                guard let character = self.credits?.cast[indexPath.row].character else { return }
+                
+                DispatchQueue.main.async {
+                    cell.profileImageView.kf.setImage(with: profileURL)
+                    cell.nameLabel.text = name
+                    cell.characterLabel.text = character
+                }
             }
             
             cell.selectionStyle = .none
             return cell
         }
+        
         
     }
     

@@ -37,6 +37,9 @@
 		143095882A8BC33A00D00421 /* OverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */; };
 		1430958B2A8BCAB000D00421 /* OverviewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095892A8BCAB000D00421 /* OverviewButtonTableViewCell.swift */; };
 		1430958C2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1430958A2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib */; };
+		143095A32A8CB36100D00421 /* TMDBTrending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095A22A8CB36100D00421 /* TMDBTrending.swift */; };
+		143095A52A8CBCCF00D00421 /* TMDBCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095A42A8CBCCF00D00421 /* TMDBCredit.swift */; };
+		143095A72A8CD24000D00421 /* TMDBMovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143095A62A8CD24000D00421 /* TMDBMovieInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,9 @@
 		143095862A8BC33A00D00421 /* OverviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableViewCell.xib; sourceTree = "<group>"; };
 		143095892A8BCAB000D00421 /* OverviewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewButtonTableViewCell.swift; sourceTree = "<group>"; };
 		1430958A2A8BCAB000D00421 /* OverviewButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewButtonTableViewCell.xib; sourceTree = "<group>"; };
+		143095A22A8CB36100D00421 /* TMDBTrending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTrending.swift; sourceTree = "<group>"; };
+		143095A42A8CBCCF00D00421 /* TMDBCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCredit.swift; sourceTree = "<group>"; };
+		143095A62A8CD24000D00421 /* TMDBMovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBMovieInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +113,11 @@
 				140926112A87250F001629D2 /* AppDelegate.swift */,
 				140926132A87250F001629D2 /* SceneDelegate.swift */,
 				140926252A8725C6001629D2 /* APIKey.swift */,
+				143095A82A8CD26800D00421 /* Model */,
+				140926362A873568001629D2 /* TMDBAPIManager.swift */,
 				140926322A8733A1001629D2 /* MediaType.swift */,
 				140926382A873E2C001629D2 /* EndPoint.swift */,
 				1430957F2A8B941900D00421 /* GenreDict.swift */,
-				140926362A873568001629D2 /* TMDBAPIManager.swift */,
 				143095782A8A1E0700D00421 /* Controller */,
 				1409263E2A887E7C001629D2 /* Extension */,
 				140926432A887ED4001629D2 /* Protocol */,
@@ -174,6 +181,16 @@
 				143095752A8A1E0300D00421 /* TMDBCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		143095A82A8CD26800D00421 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				143095A22A8CB36100D00421 /* TMDBTrending.swift */,
+				143095A42A8CBCCF00D00421 /* TMDBCredit.swift */,
+				143095A62A8CD24000D00421 /* TMDBMovieInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,16 +280,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				140926162A87250F001629D2 /* TMDBViewController.swift in Sources */,
+				143095A72A8CD24000D00421 /* TMDBMovieInfo.swift in Sources */,
 				140926122A87250F001629D2 /* AppDelegate.swift in Sources */,
 				1430957E2A8A295700D00421 /* UICollectionView + Extension.swift in Sources */,
 				140926392A873E2C001629D2 /* EndPoint.swift in Sources */,
 				140926422A887EA6001629D2 /* UITableViewExtension.swift in Sources */,
 				140926332A8733A1001629D2 /* MediaType.swift in Sources */,
 				140926262A8725C6001629D2 /* APIKey.swift in Sources */,
+				143095A32A8CB36100D00421 /* TMDBTrending.swift in Sources */,
 				140926142A87250F001629D2 /* SceneDelegate.swift in Sources */,
 				143095802A8B941900D00421 /* GenreDict.swift in Sources */,
 				140926372A873568001629D2 /* TMDBAPIManager.swift in Sources */,
 				143095872A8BC33A00D00421 /* OverviewTableViewCell.swift in Sources */,
+				143095A52A8CBCCF00D00421 /* TMDBCredit.swift in Sources */,
 				143095762A8A1E0300D00421 /* TMDBCollectionViewCell.swift in Sources */,
 				140926352A87340D001629D2 /* URL + Extension.swift in Sources */,
 				143095832A8BB6F300D00421 /* CreditTableViewCell.swift in Sources */,
