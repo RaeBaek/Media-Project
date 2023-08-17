@@ -21,4 +21,9 @@ class OverviewButtonTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        openOverviewImage.image = nil
+    }
+    
 }

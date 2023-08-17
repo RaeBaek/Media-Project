@@ -33,4 +33,9 @@ class CreditTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = nil
+    }
+    
 }

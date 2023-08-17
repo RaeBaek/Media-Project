@@ -23,6 +23,11 @@ class TMDBCollectionViewCell: UICollectionViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        backdropImageView.image = nil
+    }
+    
     func configureCell() {
         
         shadowBackView.clipsToBounds = false

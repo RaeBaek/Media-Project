@@ -48,10 +48,18 @@ class TMDBAPIManager {
                    method: .get,
                    headers: header).validate(statusCode: 200...500)
             .responseDecodable(of: TMDBMovieInfo.self) { response in
-                print("Movie Info API StatusCode:", response.response?.statusCode)
-                guard let value = response.value else { return }
-                print(value)
-                completionHandler(value)
+                
+                switch response.result {
+                case .success(let value):
+                    print("MovieInfo API StatusCode:", response.response?.statusCode)
+                    print(value)
+                    print("무비 인포 값 확인!!")
+                    completionHandler(value)
+                    print("무비 인포 값 넘김!!")
+                case .failure(let error):
+                    print("MovieInfo API StatusCode:", response.response?.statusCode)
+                    print("MovieInfo API ERROR: ", error)
+                }
             }
         
     }
@@ -68,10 +76,19 @@ class TMDBAPIManager {
                    method: .get,
                    headers: header).validate(statusCode: 200...500)
             .responseDecodable(of: TMDBCredit.self) { response in
-                print("Credit API StatusCode:", response.response?.statusCode)
-                guard let value = response.value else { return }
-                print(value)
-                completionHandler(value)
+                
+                switch response.result {
+                case .success(let value):
+                    print("Credit API StatusCode:", response.response?.statusCode)
+                    print(value)
+                    print("크레딧 값 확인!!")
+                    completionHandler(value)
+                    print("크레딧 값 넘김!!")
+                case .failure(let error):
+                    print("Credit API StatusCode:", response.response?.statusCode)
+                    print("Credit API ERROR: ", error)
+                }
+                
             }
         }
 }

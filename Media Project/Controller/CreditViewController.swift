@@ -62,7 +62,7 @@ class CreditViewController: UIViewController {
         creditTableView.register(nib2, forCellReuseIdentifier: OverviewTableViewCell.identifier)
         creditTableView.register(nib3, forCellReuseIdentifier: OverviewButtonTableViewCell.identifier)
         
-        DispatchQueue.global().async {
+//        DispatchQueue.global().async {
             guard let credit = self.credit else { return }
             print("실행되잖아요")
             print("Credit: \(credit)")
@@ -70,7 +70,7 @@ class CreditViewController: UIViewController {
             self.callRequestMovieInfoAPI(credit: credit)
             
             print("실행되긴해 뭐가 문제야")
-        }
+//        }
         
         movieTitleLabel.textColor = .white
         movieTitleLabel.font = .systemFont(ofSize: 25, weight: .bold)
@@ -103,7 +103,7 @@ class CreditViewController: UIViewController {
             self.movieInfo = response
             
             print("또 들어간다!!!!")
-            DispatchQueue.global().async {
+//            DispatchQueue.global().async {
                 print("또 들어왔다????")
                 self.callRequestCreditAPI(mediaType: .movie, credit: credit)
                 
@@ -113,12 +113,12 @@ class CreditViewController: UIViewController {
                 guard let posterURL = URL(string: "https://image.tmdb.org/t/p/original\(posterPath)") else { return }
                 guard let movieTitle = self.movieInfo?.title else { return }
                 
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.backImageView.kf.setImage(with: backdropURL)
                     self.posterImageView.kf.setImage(with: posterURL)
                     self.movieTitleLabel.text = movieTitle
-                }
-            }
+//                }
+//            }
 //            self.creditTableView.reloadData()
         }
     }
