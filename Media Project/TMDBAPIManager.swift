@@ -30,10 +30,17 @@ class TMDBAPIManager {
                    method: .get,
                    headers: header).validate(statusCode: 200...500)
             .responseDecodable(of: TMDBTrending.self) { response in
-                print("Trend API StatusCode:", response.response?.statusCode)
-                guard let value = response.value else { return }
-                print(value)
-                completionHandler(value)
+                
+                switch response.result {
+                case .success(let value):
+                    print("Trend API StatusCode:", response.response?.statusCode)
+                    print(value)
+                    completionHandler(value)
+                    
+                case .failure(let error):
+                    print("Trend API StatusCode:", response.response?.statusCode)
+                    print(error)
+                }
             }
     }
     

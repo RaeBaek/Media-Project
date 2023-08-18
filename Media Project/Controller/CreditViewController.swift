@@ -20,15 +20,13 @@ class CreditViewController: UIViewController {
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
     
-//    var backURL: URL?
-//    var posterURL: URL?
-//    var movieTitle: String?
     var credit: Int?
-//    var overView: String?
-//    var creditList: [Caster] = []
     
     var movieInfo: TMDBMovieInfo?
     var credits: TMDBCredit?
+    
+    //디스패치 그룹!!
+    let group = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,19 +60,26 @@ class CreditViewController: UIViewController {
         creditTableView.register(nib2, forCellReuseIdentifier: OverviewTableViewCell.identifier)
         creditTableView.register(nib3, forCellReuseIdentifier: OverviewButtonTableViewCell.identifier)
         
-//        DispatchQueue.global().async {
-            guard let credit = self.credit else { return }
-            print("실행되잖아요")
-            print("Credit: \(credit)")
-            
-            self.callRequestMovieInfoAPI(credit: credit)
-            
-            print("실행되긴해 뭐가 문제야")
-//        }
-        
         movieTitleLabel.textColor = .white
         movieTitleLabel.font = .systemFont(ofSize: 25, weight: .bold)
         backImageView.contentMode = .scaleAspectFill
+        
+        guard let credit = self.credit else { return }
+        print("Credit: \(credit)")
+        
+        group.enter()
+        print("ㅎㅇㅎㅇㅎㅇ")
+        callRequestMovieInfoAPI(credit: credit)
+        
+        print("ㅂㅇㅂㅇㅂㅇ")
+        
+        group.enter()
+        callRequestCreditAPI(mediaType: .movie, credit: credit)
+        
+        
+        group.notify(queue: .main) {
+            self.creditTableView.reloadData()
+        }
         
     }
     
@@ -95,31 +100,22 @@ class CreditViewController: UIViewController {
     }
     
     func callRequestMovieInfoAPI(credit: Int) {
-        print(credit)
-        print("들어왔잖아요")
         TMDBAPIManager.shared.requestMovieInfoAPI(credit: credit) { response in
             
             print(credit)
             self.movieInfo = response
             
-            print("또 들어간다!!!!")
-//            DispatchQueue.global().async {
-                print("또 들어왔다????")
-                self.callRequestCreditAPI(mediaType: .movie, credit: credit)
-                
-                guard let backdropPath = self.movieInfo?.backdropPath else { return }
-                guard let posterPath = self.movieInfo?.posterPath else { return }
-                guard let backdropURL = URL(string: "https://image.tmdb.org/t/p/original\(backdropPath)") else { return }
-                guard let posterURL = URL(string: "https://image.tmdb.org/t/p/original\(posterPath)") else { return }
-                guard let movieTitle = self.movieInfo?.title else { return }
-                
-//                DispatchQueue.main.async {
-                    self.backImageView.kf.setImage(with: backdropURL)
-                    self.posterImageView.kf.setImage(with: posterURL)
-                    self.movieTitleLabel.text = movieTitle
-//                }
-//            }
-//            self.creditTableView.reloadData()
+            guard let backdropPath = self.movieInfo?.backdropPath else { return }
+            guard let posterPath = self.movieInfo?.posterPath else { return }
+            guard let backdropURL = URL(string: "https://image.tmdb.org/t/p/original\(backdropPath)") else { return }
+            guard let posterURL = URL(string: "https://image.tmdb.org/t/p/original\(posterPath)") else { return }
+            guard let movieTitle = self.movieInfo?.title else { return }
+            
+            self.backImageView.kf.setImage(with: backdropURL)
+            self.posterImageView.kf.setImage(with: posterURL)
+            self.movieTitleLabel.text = movieTitle
+            
+            self.group.leave()
         }
     }
     
@@ -129,7 +125,7 @@ class CreditViewController: UIViewController {
             self.credits = response
             print("Credits IDdddddddddd: ", self.credits?.id)
             
-            self.creditTableView.reloadData()
+            self.group.leave()
         }
     }
 
@@ -185,18 +181,18 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CreditTableViewCell.identifier) as? CreditTableViewCell else { return UITableViewCell() }
             
-            DispatchQueue.global().async {
-                guard let profilePath = self.credits?.cast[indexPath.row].profilePath else { return }
-                guard let profileURL = URL(string: "https://image.tmdb.org/t/p/original\(profilePath)") else { return }
-                guard let name = self.credits?.cast[indexPath.row].name else { return }
-                guard let character = self.credits?.cast[indexPath.row].character else { return }
+//            DispatchQueue.global().async {
+                guard let profilePath = self.credits?.cast[indexPath.row].profilePath else { return UITableViewCell() }
+                guard let profileURL = URL(string: "https://image.tmdb.org/t/p/original\(profilePath)") else { return UITableViewCell() }
+                guard let name = self.credits?.cast[indexPath.row].name else { return UITableViewCell() }
+                guard let character = self.credits?.cast[indexPath.row].character else { return UITableViewCell() }
                 
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     cell.profileImageView.kf.setImage(with: profileURL)
                     cell.nameLabel.text = name
                     cell.characterLabel.text = character
-                }
-            }
+//                }
+//            }
             
             cell.selectionStyle = .none
             return cell

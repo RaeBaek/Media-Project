@@ -63,11 +63,9 @@ class TMDBViewController: UIViewController {
         
         print("시작")
         
-        DispatchQueue.global().async {
-            self.callRequestTrendAPI(mediaType: .movie, timeWindow: .week)
-        }
+        //애초에 비동기이기 때문에 또 비동기 처리를 할 필요가 없다.
+        self.callRequestTrendAPI(mediaType: .movie, timeWindow: .week)
         
-        print("뭐하냐????")
         
     }
     
@@ -113,18 +111,17 @@ class TMDBViewController: UIViewController {
             // 영화 개별 크레딧 받아오는 Credit API
             // 총 20개의 영화로 각각 크레딧을 받아와야한다.
             print("callRequestCreditAPI 정상 실행")
-                DispatchQueue.global().async {
-                    for i in 0..<result.count {
-                        self.callRequestCreditAPI(mediaType: mediaType, credit: result[i].id)
-                        
-                        // 장르 받아오기
-                        // 장르 또한 각각의 셀에서 하나씩 받아와야 하는거같다...?
-                        guard let genreValue = self.genreDict[result[i].genreIDS[0]] else { return }
-                        self.genreList.append(genreValue)
-                        print(self.genreList)
-                    }
+            for i in 0..<result.count {
+                //애초에 비동기이기 때문에 또 비동기 처리를 할 필요가 없다.
+                self.callRequestCreditAPI(mediaType: mediaType, credit: result[i].id)
+                
+                // 장르 받아오기
+                // 장르 또한 각각의 셀에서 하나씩 받아와야 하는거같다...?
+                guard let genreValue = self.genreDict[result[i].genreIDS[0]] else { return }
+                self.genreList.append(genreValue)
+                print(self.genreList)
+            }
                     
-                }
             // 제일 마지막의 API 호출 시점에 reload를 해주는게 제일 좋은거같다?!
 //            self.tmdbCollectionView.reloadData()
             // 음 그렇다면 API 갯수가 몇개든 다 호출이 되는 시점에 reload 해주면 되지 않을까?
@@ -132,7 +129,6 @@ class TMDBViewController: UIViewController {
             print("끝")
             
             print("movieList 잘 들어감")
-            
             
         }
         
