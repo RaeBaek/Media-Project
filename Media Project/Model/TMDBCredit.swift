@@ -18,7 +18,7 @@ struct Cast: Codable {
     let adult: Bool
     let gender, id: Int
     let knownForDepartment: Department
-    let name, originalName: String
+    let name, originalName: String?
     let popularity: Double
     let profilePath: String?
     let castID: Int?

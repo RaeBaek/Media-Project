@@ -98,4 +98,46 @@ class TMDBAPIManager {
                 
             }
         }
+    
+    func requestSimilarAPI(id: Int, completionHandler: @escaping (TMDBSimilar) -> ()) {
+        // similar URL
+        // https://api.themoviedb.org/3/movie/299534/similar
+        let url = URL.baseUrl + "movie/" + "\(id)" + "/similar"
+        
+        AF.request(url,
+                   method: .get,
+                   headers: header).validate(statusCode: 200...500)
+            .responseDecodable(of: TMDBSimilar.self) { response in
+                switch response.result {
+                case .success(let value):
+                    print("SimilarAPI statusCode:", response.response?.statusCode)
+                    completionHandler(value)
+                case .failure(let error):
+                    print("SimilarAPI statusCode:", response.response?.statusCode)
+                    print("Credit API ERROR: ", error)
+                }
+            }
+        
+    }
+    
+    func requestVedioAPI(id: Int, completionHandler: @escaping (TMDBVedio) -> ()) {
+        // vedio URL
+        // https://api.themoviedb.org/3/movie/299534/vedio
+        let url = URL.baseUrl + "movie/" + "\(id)" + "/similar"
+        
+        AF.request(url,
+                   method: .get,
+                   headers: header).validate(statusCode: 200...500)
+            .responseDecodable(of: TMDBVedio.self) { response in
+                switch response.result {
+                case .success(let value):
+                    print("SimilarAPI statusCode:", response.response?.statusCode)
+                    completionHandler(value)
+                case .failure(let error):
+                    print("SimilarAPI statusCode:", response.response?.statusCode)
+                    print("Credit API ERROR: ", error)
+                }
+            }
+        
+    }
 }

@@ -15,6 +15,7 @@ class TMDBCollectionViewCell: UICollectionViewCell {
     @IBOutlet var genreLabel: UILabel!
     @IBOutlet var backdropImageView: UIImageView!
     @IBOutlet var movieTitleLabel: UILabel!
+    @IBOutlet var movieOriginalTitle: UILabel!
     @IBOutlet var movieActorsLabel: UILabel!
 
     override func awakeFromNib() {
@@ -53,6 +54,9 @@ class TMDBCollectionViewCell: UICollectionViewCell {
         
         movieTitleLabel.font = .systemFont(ofSize: 20, weight: .regular)
         movieTitleLabel.textColor = .black
+        
+        movieOriginalTitle.font = .systemFont(ofSize: 15, weight: .regular)
+        movieOriginalTitle.textColor = .black
         
         movieActorsLabel.font = .systemFont(ofSize: 15, weight: .regular)
         movieActorsLabel.textColor = .darkGray

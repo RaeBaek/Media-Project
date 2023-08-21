@@ -18,7 +18,7 @@ class TMDBViewController: UIViewController {
     
     var actors: [String] = []
     var actorsList: [[String]] = []
-    var genreList: [String] = []
+    let genreList = TMDBGenre()
     
     let genreDict = [
         28: "Action",
@@ -117,9 +117,9 @@ class TMDBViewController: UIViewController {
                 
                 // 장르 받아오기
                 // 장르 또한 각각의 셀에서 하나씩 받아와야 하는거같다...?
-                guard let genreValue = self.genreDict[result[i].genreIDS[0]] else { return }
-                self.genreList.append(genreValue)
-                print(self.genreList)
+//                guard let genreValue = self.genreDict[result[i].genreIDS[0]] else { return }
+//                self.genreList.append(genreValue)
+//                print(self.genreList)
             }
                     
             // 제일 마지막의 API 호출 시점에 reload를 해주는게 제일 좋은거같다?!
@@ -138,6 +138,7 @@ class TMDBViewController: UIViewController {
         TMDBAPIManager.shared.requestCreditAPI(mediaType: mediaType, credit: credit) { response in
             
             print("creditAPI 호출 시작")
+            
             let casts = [response.cast[0].name, response.cast[1].name, response.cast[2].name, response.cast[3].name]
             print("여기여기여기여기")
             print(casts)
@@ -145,7 +146,8 @@ class TMDBViewController: UIViewController {
 //            let items = [cast[0], cast[1], cast[2], cast[3]]
             
             for item in casts {
-                self.actors.append(item)
+                // Optional 확인
+                self.actors.append(item!)
                 print("나 액터즈: ", self.actors)
             }
             self.actorsList.append(self.actors)
@@ -185,7 +187,10 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
             guard let backdropPath = self.trending?.results[indexPath.row].backdropPath else { return }
             guard let backdropUrl = URL(string: "https://image.tmdb.org/t/p/original\(backdropPath)") else { return }
             guard let releaseDate = self.trending?.results[indexPath.row].releaseDate else { return }
+            guard let genre = self.trending?.results[indexPath.row].genreIDS[0] else { return }
+            guard let genreValue = self.genreList.genreDict[genre] else { return }
             guard let title = self.trending?.results[indexPath.row].title else { return }
+            guard let originalTitle = self.trending?.results[indexPath.row].originalTitle else { return }
             
             // 글로벌 비동기에 배우라벨만 넣으면 실행된다.
             // 나머지 라벨을 넣어버리면 멈춰버리는데 왜...?
@@ -194,7 +199,8 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.backdropImageView.kf.setImage(with: backdropUrl)
                 cell.releaseDateLabel.text = releaseDate
                 cell.movieTitleLabel.text = title
-                cell.genreLabel.text = "#\(self.genreList[indexPath.row])"
+                cell.movieOriginalTitle.text = originalTitle
+                cell.genreLabel.text = "#\(genreValue)"
                 cell.movieActorsLabel.text = "\(self.actorsList[indexPath.row][0]), \(self.actorsList[indexPath.row][1]), \(self.actorsList[indexPath.row][2]), \(self.actorsList[indexPath.row][3])"
             }
         }
@@ -203,17 +209,19 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(identifier: CreditViewController.identifier) as? CreditViewController else { return }
+        guard let creditViewController = storyboard?.instantiateViewController(identifier: CreditViewController.identifier) as? CreditViewController else { return }
+        
+        guard let tmdbSegmentViewController = storyboard?.instantiateViewController(identifier: TMDBSegmentViewController.identifier) as? TMDBSegmentViewController else { return }
         
 //        vc.backURL = movieList[indexPath.row].backdropURL
 //        vc.posterURL = movieList[indexPath.row].posterURL
 //        vc.movieTitle = movieList[indexPath.row].title
-        vc.credit = self.trending?.results[indexPath.row].id
+        tmdbSegmentViewController.credit = self.trending?.results[indexPath.row].id
 //        vc.overView = movieList[indexPath.row].overview
         
         print("아이디 전다아아아아ㅏㅇㄹ:", self.trending?.results[indexPath.row].id)
         
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(tmdbSegmentViewController, animated: true)
     }
     
 }

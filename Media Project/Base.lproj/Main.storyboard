@@ -87,6 +87,66 @@
             </objects>
             <point key="canvasLocation" x="2443.5114503816794" y="-2.1126760563380285"/>
         </scene>
+        <!--Segment View Controller-->
+        <scene sceneID="8p8-2h-J02">
+            <objects>
+                <viewController storyboardIdentifier="TMDBSegmentViewController" id="fyR-BW-NwZ" customClass="TMDBSegmentViewController" customModule="Media_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n3R-vK-2H8">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dJl-OS-t35">
+                                <rect key="frame" x="0.0" y="59" width="393" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mwd-Fi-eP9"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Similar"/>
+                                    <segment title="Vedio"/>
+                                </segments>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vMI-5c-wo8">
+                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q6b-Wg-pCr">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="V1T-aG-ry4">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uDN-u5-VvI">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vyC-W9-4uM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dJl-OS-t35" firstAttribute="leading" secondItem="vyC-W9-4uM" secondAttribute="leading" id="0Bt-yf-jel"/>
+                            <constraint firstItem="vyC-W9-4uM" firstAttribute="trailing" secondItem="vMI-5c-wo8" secondAttribute="trailing" id="3Wt-9U-xBd"/>
+                            <constraint firstItem="dJl-OS-t35" firstAttribute="top" secondItem="vyC-W9-4uM" secondAttribute="top" id="9vw-dt-hWU"/>
+                            <constraint firstItem="vMI-5c-wo8" firstAttribute="leading" secondItem="vyC-W9-4uM" secondAttribute="leading" id="S9t-zd-na6"/>
+                            <constraint firstItem="vyC-W9-4uM" firstAttribute="trailing" secondItem="dJl-OS-t35" secondAttribute="trailing" id="dAQ-jr-N17"/>
+                            <constraint firstItem="vyC-W9-4uM" firstAttribute="bottom" secondItem="vMI-5c-wo8" secondAttribute="bottom" id="itZ-AH-jOz"/>
+                            <constraint firstItem="vMI-5c-wo8" firstAttribute="top" secondItem="dJl-OS-t35" secondAttribute="bottom" constant="10" id="mfg-oC-v83"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="segmentCollectionView" destination="vMI-5c-wo8" id="9AX-ch-CJD"/>
+                        <outlet property="segmentControl" destination="dJl-OS-t35" id="jPc-DD-fqM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AdU-RR-DiR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3373" y="-2"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="XAK-aL-kgc">
             <objects>
