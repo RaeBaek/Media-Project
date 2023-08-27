@@ -21,6 +21,7 @@ class CreditViewController: UIViewController {
     @IBOutlet var posterImageView: UIImageView!
     
     var credit: Int?
+    var isExpand: Bool = false
     
     var movieInfo: TMDBMovieInfo?
     var credits: TMDBCredit?
@@ -43,14 +44,13 @@ class CreditViewController: UIViewController {
         
         creditTableView.delegate = self
         creditTableView.dataSource = self
-//        creditTableView.rowHeight = 80
         
         creditTableView.sectionHeaderHeight = 40
         creditTableView.sectionFooterHeight = 0
         creditTableView.backgroundColor = .systemBackground
         // 아래 코드는 테이블 전체가 변하므로
         // 섹션별로 바꿀 수 있는 코드는 없는지 알아보자
-//        creditTableView.separatorStyle = .none
+        creditTableView.separatorStyle = .none
 //        creditTableView.separatorColor = .clear
         
         let nib = UINib(nibName: CreditTableViewCell.identifier, bundle: nil)
@@ -152,7 +152,7 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                return 70
+                return UITableView.automaticDimension
             } else {
                 return 30
             }
@@ -167,11 +167,13 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell else { return UITableViewCell() }
                 
                 cell.overviewLabel.text = self.movieInfo?.overview
+                cell.overviewLabel.numberOfLines = isExpand ? 0 : 2
                 cell.selectionStyle = .none
                 
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: OverviewButtonTableViewCell.identifier) as? OverviewButtonTableViewCell else { return UITableViewCell() }
+                cell.openOverviewImage.image = isExpand ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
                 
                 cell.selectionStyle = .none
                 
@@ -197,8 +199,15 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             return cell
         }
-        
-        
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        isExpand.toggle()
+        if indexPath == IndexPath(row: 1, section: 0) {
+            tableView.reloadRows(at: [indexPath, IndexPath(row: 0, section: 0)], with: .automatic)
+        } else {
+            return
+        }
+        
+    }
 }

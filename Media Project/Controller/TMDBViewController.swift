@@ -216,12 +216,13 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //        vc.backURL = movieList[indexPath.row].backdropURL
 //        vc.posterURL = movieList[indexPath.row].posterURL
 //        vc.movieTitle = movieList[indexPath.row].title
-        tmdbSegmentViewController.credit = self.trending?.results[indexPath.row].id
+        creditViewController.credit = self.trending?.results[indexPath.row].id
+//        tmdbSegmentViewController.credit = self.trending?.results[indexPath.row].id
 //        vc.overView = movieList[indexPath.row].overview
         
         print("아이디 전다아아아아ㅏㅇㄹ:", self.trending?.results[indexPath.row].id)
         
-        navigationController?.pushViewController(tmdbSegmentViewController, animated: true)
+        navigationController?.pushViewController(creditViewController, animated: true)
     }
     
 }
