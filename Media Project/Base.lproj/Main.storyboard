@@ -76,12 +76,6 @@
                             <constraint firstItem="Tql-Yj-5aq" firstAttribute="top" secondItem="z3A-ag-iI4" secondAttribute="top" id="qSQ-ZO-fIQ"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="backImageView" destination="3yo-hA-Ege" id="keh-FM-gjp"/>
-                        <outlet property="creditTableView" destination="Tql-Yj-5aq" id="Mgm-TK-NfD"/>
-                        <outlet property="movieTitleLabel" destination="mXS-sD-e4i" id="oEd-HE-3bN"/>
-                        <outlet property="posterImageView" destination="Von-wE-afj" id="uhz-tS-FBF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMx-UT-5tw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -147,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="3373" y="-2"/>
         </scene>
-        <!--View Controller-->
+        <!--Trending View Controller-->
         <scene sceneID="XAK-aL-kgc">
             <objects>
-                <viewController storyboardIdentifier="TMDBViewController" id="35Y-tX-LbD" customClass="TMDBViewController" customModule="Media_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrendingViewController" id="35Y-tX-LbD" customClass="TrendingViewController" customModule="Media_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mmc-tk-JsW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,11 +183,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="list.bullet" catalog="system" id="QPt-IS-JPM"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="6eE-4T-TQ2"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="listButton" destination="QPt-IS-JPM" id="6yM-Q7-JRh"/>
-                        <outlet property="searchButton" destination="6eE-4T-TQ2" id="aVv-ph-by8"/>
-                        <outlet property="tmdbCollectionView" destination="YmU-Iv-r6t" id="Dx3-DW-GnI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f00-dQ-mag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

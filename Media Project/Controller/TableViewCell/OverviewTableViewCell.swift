@@ -7,13 +7,28 @@
 
 import UIKit
 
-class OverviewTableViewCell: UITableViewCell {
-
-    @IBOutlet var overviewLabel: UILabel!
+class OverviewTableViewCell: BaseTableViewCell {
+    
+    let overviewLabel = {
+        let view = UILabel()
+        view.numberOfLines = 0
+        return view
+    }()
+    
+    override func configureCell() {
+        contentView.addSubview(overviewLabel)
+    }
+    
+    override func setConstraints() {
+        overviewLabel.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.verticalEdges.equalToSuperview().inset(10)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        overviewLabel.numberOfLines = 0
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

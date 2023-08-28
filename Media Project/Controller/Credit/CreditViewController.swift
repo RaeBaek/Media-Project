@@ -13,12 +13,14 @@ struct Caster {
     var character: String
 }
 
-class CreditViewController: UIViewController {
+class CreditViewController: BaseViewController {
     
-    @IBOutlet var creditTableView: UITableView!
-    @IBOutlet var backImageView: UIImageView!
-    @IBOutlet var movieTitleLabel: UILabel!
-    @IBOutlet var posterImageView: UIImageView!
+//    @IBOutlet var creditTableView: UITableView!
+//    @IBOutlet var backImageView: UIImageView!
+//    @IBOutlet var movieTitleLabel: UILabel!
+//    @IBOutlet var posterImageView: UIImageView!
+    
+    let mainView = CreditView()
     
     var credit: Int?
     var isExpand: Bool = false
@@ -28,6 +30,11 @@ class CreditViewController: UIViewController {
     
     //디스패치 그룹!!
     let group = DispatchGroup()
+    
+    override func loadView() {
+        self.view = mainView
+        mainView.backgroundColor = .systemGreen
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,27 +49,27 @@ class CreditViewController: UIViewController {
         backButton.tintColor = .black
         self.navigationItem.backBarButtonItem = backButton
         
-        creditTableView.delegate = self
-        creditTableView.dataSource = self
+        mainView.creditTableView.delegate = self
+        mainView.creditTableView.dataSource = self
         
-        creditTableView.sectionHeaderHeight = 40
-        creditTableView.sectionFooterHeight = 0
-        creditTableView.backgroundColor = .systemBackground
-        // 아래 코드는 테이블 전체가 변하므로
-        // 섹션별로 바꿀 수 있는 코드는 없는지 알아보자
-        creditTableView.separatorStyle = .none
+//        creditTableView.sectionHeaderHeight = 40
+//        creditTableView.sectionFooterHeight = 0
+//        creditTableView.backgroundColor = .systemBackground
+//        // 아래 코드는 테이블 전체가 변하므로
+//        // 섹션별로 바꿀 수 있는 코드는 없는지 알아보자
+//        creditTableView.separatorStyle = .none
 //        creditTableView.separatorColor = .clear
         
-        let nib = UINib(nibName: CreditTableViewCell.identifier, bundle: nil)
-        let nib2 = UINib(nibName: OverviewTableViewCell.identifier, bundle: nil)
-        let nib3 = UINib(nibName: OverviewButtonTableViewCell.identifier, bundle: nil)
-        creditTableView.register(nib, forCellReuseIdentifier: CreditTableViewCell.identifier)
-        creditTableView.register(nib2, forCellReuseIdentifier: OverviewTableViewCell.identifier)
-        creditTableView.register(nib3, forCellReuseIdentifier: OverviewButtonTableViewCell.identifier)
+//        let nib = UINib(nibName: CreditTableViewCell.identifier, bundle: nil)
+//        let nib2 = UINib(nibName: OverviewTableViewCell.identifier, bundle: nil)
+//        let nib3 = UINib(nibName: OverviewButtonTableViewCell.identifier, bundle: nil)
+//        creditTableView.register(nib, forCellReuseIdentifier: CreditTableViewCell.identifier)
+//        creditTableView.register(nib2, forCellReuseIdentifier: OverviewTableViewCell.identifier)
+//        creditTableView.register(nib3, forCellReuseIdentifier: OverviewButtonTableViewCell.identifier)
         
-        movieTitleLabel.textColor = .white
-        movieTitleLabel.font = .systemFont(ofSize: 25, weight: .bold)
-        backImageView.contentMode = .scaleAspectFill
+//        movieTitleLabel.textColor = .white
+//        movieTitleLabel.font = .systemFont(ofSize: 25, weight: .bold)
+//        backImageView.contentMode = .scaleAspectFill
         
         guard let credit = self.credit else { return }
         print("Credit: \(credit)")
@@ -78,7 +85,7 @@ class CreditViewController: UIViewController {
         
         
         group.notify(queue: .main) {
-            self.creditTableView.reloadData()
+            self.mainView.creditTableView.reloadData()
         }
         
     }
@@ -111,9 +118,9 @@ class CreditViewController: UIViewController {
             guard let posterURL = URL(string: "https://image.tmdb.org/t/p/original\(posterPath)") else { return }
             guard let movieTitle = self.movieInfo?.title else { return }
             
-            self.backImageView.kf.setImage(with: backdropURL)
-            self.posterImageView.kf.setImage(with: posterURL)
-            self.movieTitleLabel.text = movieTitle
+            self.mainView.backImageView.kf.setImage(with: backdropURL)
+            self.mainView.posterImageView.kf.setImage(with: posterURL)
+            self.mainView.movieTitleLabel.text = movieTitle
             
             self.group.leave()
         }

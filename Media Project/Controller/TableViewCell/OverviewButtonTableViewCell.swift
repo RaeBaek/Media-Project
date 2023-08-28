@@ -7,13 +7,31 @@
 
 import UIKit
 
-class OverviewButtonTableViewCell: UITableViewCell {
+class OverviewButtonTableViewCell: BaseTableViewCell {
 
-    @IBOutlet var openOverviewImage: UIImageView!
+//    @IBOutlet var openOverviewImage: UIImageView!
+    
+    let openOverviewImage = {
+        let view = UIImageView()
+        view.tintColor = .darkGray
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
+    override func configureCell() {
+        contentView.addSubview(openOverviewImage)
+    }
+    
+    override func setConstraints() {
+        openOverviewImage.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        openOverviewImage.tintColor = .darkGray
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,7 +41,7 @@ class OverviewButtonTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        openOverviewImage.image = nil
+//        openOverviewImage.image = nil
     }
     
 }
