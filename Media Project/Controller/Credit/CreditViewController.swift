@@ -33,7 +33,6 @@ class CreditViewController: BaseViewController {
     
     override func loadView() {
         self.view = mainView
-        mainView.backgroundColor = .systemGreen
     }
     
     override func viewDidLoad() {
@@ -45,31 +44,14 @@ class CreditViewController: BaseViewController {
 //        navigationController?.navigationBar.topItem?.title = ""
 //        navigationController?.navigationBar.tintColor = .black
         
-        let backButton = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(backButtonClicked))
-        backButton.tintColor = .black
-        self.navigationItem.backBarButtonItem = backButton
+//        let backButton = UIBarButtonItem(title: "gdgd", style: .done, target: self, action: #selector(backButtonClicked))
+//        backButton.tintColor = .black
+//        self.navigationItem.backBarButtonItem = backButton
+        
+        navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
         
         mainView.creditTableView.delegate = self
         mainView.creditTableView.dataSource = self
-        
-//        creditTableView.sectionHeaderHeight = 40
-//        creditTableView.sectionFooterHeight = 0
-//        creditTableView.backgroundColor = .systemBackground
-//        // 아래 코드는 테이블 전체가 변하므로
-//        // 섹션별로 바꿀 수 있는 코드는 없는지 알아보자
-//        creditTableView.separatorStyle = .none
-//        creditTableView.separatorColor = .clear
-        
-//        let nib = UINib(nibName: CreditTableViewCell.identifier, bundle: nil)
-//        let nib2 = UINib(nibName: OverviewTableViewCell.identifier, bundle: nil)
-//        let nib3 = UINib(nibName: OverviewButtonTableViewCell.identifier, bundle: nil)
-//        creditTableView.register(nib, forCellReuseIdentifier: CreditTableViewCell.identifier)
-//        creditTableView.register(nib2, forCellReuseIdentifier: OverviewTableViewCell.identifier)
-//        creditTableView.register(nib3, forCellReuseIdentifier: OverviewButtonTableViewCell.identifier)
-        
-//        movieTitleLabel.textColor = .white
-//        movieTitleLabel.font = .systemFont(ofSize: 25, weight: .bold)
-//        backImageView.contentMode = .scaleAspectFill
         
         guard let credit = self.credit else { return }
         print("Credit: \(credit)")
@@ -176,6 +158,7 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.overviewLabel.text = self.movieInfo?.overview
                 cell.overviewLabel.numberOfLines = isExpand ? 0 : 2
                 cell.selectionStyle = .none
+//                cell.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
                 
                 return cell
             } else {
