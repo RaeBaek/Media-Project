@@ -57,6 +57,14 @@
 		148CAA5E2A9C693000861CFC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148CAA5D2A9C693000861CFC /* BaseViewController.swift */; };
 		148CAA602A9C69ED00861CFC /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148CAA5F2A9C69ED00861CFC /* BaseView.swift */; };
 		148CAA632A9C6E8F00861CFC /* TrendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148CAA622A9C6E8F00861CFC /* TrendingView.swift */; };
+		1497C4072AA20E930009EDFE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C4062AA20E930009EDFE /* ProfileEditViewController.swift */; };
+		1497C40A2AA20F2E0009EDFE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C4092AA20F2E0009EDFE /* ProfileEditView.swift */; };
+		1497C40C2AA20FCC0009EDFE /* ProfileImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C40B2AA20FCC0009EDFE /* ProfileImageTableViewCell.swift */; };
+		1497C40E2AA210000009EDFE /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C40D2AA210000009EDFE /* ProfileTableViewCell.swift */; };
+		1497C4112AA2110C0009EDFE /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C4102AA2110C0009EDFE /* ProfileImageView.swift */; };
+		1497C4132AA211290009EDFE /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C4122AA211290009EDFE /* AvatarImageView.swift */; };
+		1497C4162AA2117B0009EDFE /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C4152AA2117B0009EDFE /* NextView.swift */; };
+		1497C4182AA2118C0009EDFE /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497C4172AA2118C0009EDFE /* NextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +116,14 @@
 		148CAA5D2A9C693000861CFC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		148CAA5F2A9C69ED00861CFC /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		148CAA622A9C6E8F00861CFC /* TrendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingView.swift; sourceTree = "<group>"; };
+		1497C4062AA20E930009EDFE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		1497C4092AA20F2E0009EDFE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		1497C40B2AA20FCC0009EDFE /* ProfileImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageTableViewCell.swift; sourceTree = "<group>"; };
+		1497C40D2AA210000009EDFE /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		1497C4102AA2110C0009EDFE /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		1497C4122AA211290009EDFE /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		1497C4152AA2117B0009EDFE /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
+		1497C4172AA2118C0009EDFE /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +205,8 @@
 		143095782A8A1E0700D00421 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1497C4142AA211650009EDFE /* Next */,
+				1497C4082AA20F1A0009EDFE /* Profile */,
 				148CAA612A9C6E7400861CFC /* Trending */,
 				147917E92A9CC47B00FCCDD3 /* Credit */,
 				14881B842A9341AD004B5C4C /* TMDBSegmentViewController.swift */,
@@ -273,6 +291,36 @@
 				140926152A87250F001629D2 /* TrendingViewController.swift */,
 			);
 			path = Trending;
+			sourceTree = "<group>";
+		};
+		1497C4082AA20F1A0009EDFE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1497C40F2AA210DC0009EDFE /* ImageView */,
+				1497C4092AA20F2E0009EDFE /* ProfileEditView.swift */,
+				1497C4062AA20E930009EDFE /* ProfileEditViewController.swift */,
+				1497C40B2AA20FCC0009EDFE /* ProfileImageTableViewCell.swift */,
+				1497C40D2AA210000009EDFE /* ProfileTableViewCell.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1497C40F2AA210DC0009EDFE /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1497C4102AA2110C0009EDFE /* ProfileImageView.swift */,
+				1497C4122AA211290009EDFE /* AvatarImageView.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		1497C4142AA211650009EDFE /* Next */ = {
+			isa = PBXGroup;
+			children = (
+				1497C4152AA2117B0009EDFE /* NextView.swift */,
+				1497C4172AA2118C0009EDFE /* NextViewController.swift */,
+			);
+			path = Next;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +418,8 @@
 				143095A72A8CD24000D00421 /* TMDBMovieInfo.swift in Sources */,
 				140926122A87250F001629D2 /* AppDelegate.swift in Sources */,
 				147917ED2A9CC87A00FCCDD3 /* BaseTableViewCell.swift in Sources */,
+				1497C4182AA2118C0009EDFE /* NextViewController.swift in Sources */,
+				1497C40C2AA20FCC0009EDFE /* ProfileImageTableViewCell.swift in Sources */,
 				148CAA5E2A9C693000861CFC /* BaseViewController.swift in Sources */,
 				14881B7F2A934039004B5C4C /* TMDBSimilar.swift in Sources */,
 				1430957E2A8A295700D00421 /* UICollectionView + Extension.swift in Sources */,
@@ -379,6 +429,7 @@
 				140926422A887EA6001629D2 /* UITableViewExtension.swift in Sources */,
 				147F70F72A989EB7008BA84B /* CheckUIView.swift in Sources */,
 				14881B872A934378004B5C4C /* TMDBVedio.swift in Sources */,
+				1497C40A2AA20F2E0009EDFE /* ProfileEditView.swift in Sources */,
 				14881B822A9340B7004B5C4C /* SimilarCollectionViewCell.swift in Sources */,
 				140926332A8733A1001629D2 /* MediaType.swift in Sources */,
 				140926262A8725C6001629D2 /* APIKey.swift in Sources */,
@@ -389,16 +440,21 @@
 				140926372A873568001629D2 /* TMDBAPIManager.swift in Sources */,
 				143095872A8BC33A00D00421 /* OverviewTableViewCell.swift in Sources */,
 				143095A52A8CBCCF00D00421 /* TMDBCredit.swift in Sources */,
+				1497C4162AA2117B0009EDFE /* NextView.swift in Sources */,
 				14881B892A93479F004B5C4C /* TMDBGenre.swift in Sources */,
+				1497C4132AA211290009EDFE /* AvatarImageView.swift in Sources */,
 				143095762A8A1E0300D00421 /* TMDBCollectionViewCell.swift in Sources */,
 				140926352A87340D001629D2 /* URL + Extension.swift in Sources */,
 				143095832A8BB6F300D00421 /* CreditTableViewCell.swift in Sources */,
 				140926452A88A67F001629D2 /* CreditViewController.swift in Sources */,
 				140926402A887E8D001629D2 /* UIViewController + Extension.swift in Sources */,
 				1430957C2A8A293300D00421 /* UICollectionViewCell + Extension.swift in Sources */,
+				1497C40E2AA210000009EDFE /* ProfileTableViewCell.swift in Sources */,
 				1430958B2A8BCAB000D00421 /* OverviewButtonTableViewCell.swift in Sources */,
 				1409263D2A874AA4001629D2 /* ReusableViewProtocol.swift in Sources */,
+				1497C4112AA2110C0009EDFE /* ProfileImageView.swift in Sources */,
 				14881B852A9341AD004B5C4C /* TMDBSegmentViewController.swift in Sources */,
+				1497C4072AA20E930009EDFE /* ProfileEditViewController.swift in Sources */,
 				148CAA602A9C69ED00861CFC /* BaseView.swift in Sources */,
 				147917EB2A9CC48D00FCCDD3 /* CreditView.swift in Sources */,
 			);

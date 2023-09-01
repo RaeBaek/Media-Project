@@ -17,9 +17,8 @@ class TrendingViewController: BaseViewController {
         return view
     }()
     
-    let searchButton = {
-        let view = UIBarButtonItem()
-        view.image = UIImage(systemName: "magnifyingglass")
+    lazy var personButton = {
+        let view = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .done, target: self, action: #selector(personButtonClicked(_:)))
         view.tintColor = .black
         return view
     }()
@@ -62,6 +61,8 @@ class TrendingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        navigationController?.navigationItem.rightBarButtonItem =
+        
         //애초에 비동기이기 때문에 또 비동기 처리를 할 필요가 없다.
         self.callRequestTrendAPI(mediaType: .movie, timeWindow: .week)
         
@@ -73,7 +74,8 @@ class TrendingViewController: BaseViewController {
         title = "TMDB"
         
         navigationItem.leftBarButtonItem = listButton
-        navigationItem.rightBarButtonItem = searchButton
+        navigationItem.rightBarButtonItem = personButton
+        navigationItem.backButtonTitle = ""
         
         mainView.tmdbCollectionView.delegate = self
         mainView.tmdbCollectionView.dataSource = self
@@ -82,6 +84,11 @@ class TrendingViewController: BaseViewController {
     
     override func setConstraints() {
         
+    }
+    
+    @objc func personButtonClicked(_ sender: UIBarButtonItem) {
+        let vc = ProfileEditViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func callRequestTrendAPI(mediaType: MediaType, timeWindow: EndPoint) {
@@ -176,6 +183,13 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
 //        guard let tmdbSegmentViewController = storyboard?.instantiateViewController(identifier: TMDBSegmentViewController.identifier) as? TMDBSegmentViewController else { return }
 
         vc.credit = self.trending?.results[indexPath.row].id
+        
+        // 확인!!!!!!!!!!
+        // 네트워크 로딩이 상대적으로 길게 느껴진다면?
+        // TrendingViewController에서 API를 호출해버리고 값을 넘겨버리는 것이다.
+//        vc.callRequestMovieInfoAPI(credit: <#T##Int#>)
+        
+        
 //        tmdbSegmentViewController.credit = self.trending?.results[indexPath.row].id
         
         navigationController?.pushViewController(vc, animated: true)
